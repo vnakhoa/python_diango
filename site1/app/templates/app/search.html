@@ -1,0 +1,36 @@
+
+{% extends "app/base.html" %}
+{% load static  %}
+
+{% block search_result %} 
+    <div style="min-height: 80vh">
+        <h3 style="margin: 20px 0 15px 15px">Product</h3>
+        <div style="margin-left: 15px">
+            {% if product.count == 0 %}
+                <p style="color: #ed3737">No product found !<p>
+            {%else %}
+                <p><span style="color: green ; font-weight: bold">{{product.count}}</span> product found!<p>  
+            {% endif %}
+        </div>
+        <div class="home_container">
+            {% for item in product %}
+                <div class="card" style="width: 18rem;">
+                    <div style="height: 180px; overflow: hidden">
+                        <img src="{{item.image.url}}" class="card-img-top" alt="...">
+                    </div>
+                    <div class="card-body" style="margin-top: auto">
+                        <h5 class="card-title">{{item.product}}</h5>
+                        <p class="card-text">${{item.price}}</p>
+                        <form method="POST" action="{% url 'add_cart' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{item.id}}"></input>
+                            <button type="submit">Add to cart</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock search_result %}
+
+

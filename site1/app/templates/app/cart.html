@@ -1,0 +1,77 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block cart_content %}
+<div class="row w-100">
+	<div class="col-lg-12">
+		<div class="box-element">
+
+			<a  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Continue Shopping</a>
+
+			<br>
+			<br>
+			<table class="table">
+				<tr>
+					<th><h5>Items: <strong>{{products.count}}</strong></h5></th>
+					<th><h5>Total:<strong> ${{total_price}}</strong></h5></th>
+					<th>
+						<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
+					</th>
+				</tr>
+			</table>
+
+		</div>
+
+		<br>	
+
+		<table class="table">
+			<thead>
+			  <tr>
+				<th scope="col">#</th>
+				<th scope="col">Product</th>
+				<th scope="col">Image</th>
+				<th scope="col">Price</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Total</th>
+			  </tr>
+			</thead>
+			<tbody>
+				
+				{% for item in products  %}
+					<tr>
+					<th scope="row">{{item.id}}</th>
+					<td>{{item.product.product}}</td>
+					<td>
+						<div class="image_item">
+							<img class="row-image" src="{{item.product.image.url}}">
+						</div>	
+					</td>
+					<td>${{item.product.price}}</td>
+					<td>
+						<div class="quantity_container" style="flex:1">
+							<div class="quantity">
+								<form method='POST' action="{% url 'incre_descrea'%}">
+									{% csrf_token %}
+									<input type="hidden" name="action_todo" value="increase"></input>
+									<input type="hidden" name="id" value="{{item.id}}"></input>
+									<button style="border: none" type="submit"><ion-icon name="arrow-up-outline"></ion-icon></button>
+								</form>
+								<form method='POST' action="{% url 'incre_descrea'%}">
+									{% csrf_token %}
+									<input type="hidden" name="action_todo" value="descrease"></input>
+									<input type="hidden" name="id" value="{{item.id}}"></input>
+									<button style="border: none" type="submit"><ion-icon name="arrow-down-outline"></ion-icon></button>
+								</form>
+							</div>
+							<p class="quantity_number">{{item.quantity}}</p>
+						</div>
+					</td>
+					<td>{{item.get_total}}</td>
+					</tr>
+				
+				{% endfor %}
+			  
+			</tbody>
+		  </table>
+	</div>
+</div>
+{% endblock cart_content %}

@@ -1,0 +1,80 @@
+h4 {
+    color: blue
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quantity_container {
+    display: flex;
+    gap: 3px;
+}
+
+.quantity {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+
+
+.home_container {
+    display: flex;
+    background-color: rgb(132, 61, 198);
+    flex-wrap: wrap;
+    padding: 2px;
+
+}
+
+.product_list {
+    width: 25%;
+    background-color: brown;
+    padding: 10px;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+.product_item {
+    width: 100%;
+    margin-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.add_price {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.row-image {
+    width: 100%;
+}
+
+.image_item {
+    /* min-width: 60px; */
+    width: 40px;
+    height: 40px;
+}
+
+button {
+    border: 1px solid gray;
+    cursor: pointer;
+    color: black;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(228, 241, 205);
+}

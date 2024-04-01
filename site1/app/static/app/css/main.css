@@ -1,0 +1,103 @@
+/* Ctrl + Shift R (ở trình duyệt chrome):  Xóa cache để áp dụng css trên trình duyệt*/
+
+h4 {
+    color: blue
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    background-color: cadetblue;
+    border-radius: 5px;
+}
+
+a:hover {
+    color: black;
+}
+
+.cart-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.quantity_container {
+    display: flex;
+}
+
+
+.quantity {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+form {
+    margin-bottom: auto;
+}
+
+
+
+.home_container {
+    display: flex;
+    /* background-color: rgb(132, 61, 198); */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2px;
+    gap: 2px
+}
+
+.product_list {
+    width: 24%;
+    /* background-color: brown; */
+    padding: 10px;
+    border: 1px solid rgb(217, 161, 161);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product_item {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.add_price {
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.row-image {
+    width: 100%;
+}
+
+.image_item {
+    /* min-width: 60px; */
+    width: 40px;
+    height: 40px;
+}
+
+button {
+    border: 2px solid gray;
+    cursor: pointer;
+    color: black;
+    background-color: transparent;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: rgb(228, 241, 205);
+}
+
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}

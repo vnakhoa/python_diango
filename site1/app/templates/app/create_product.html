@@ -1,0 +1,60 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block create_product %}
+
+    <!-- Forrm Create Product--> 
+    <h3 style="text-align: center; margin-top: 25px">Create Products Form</h3>
+    <form method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column ; width: 35%; margin: 0 auto; margin-top: 40px">
+        {% csrf_token %}
+        Product name: {{form.product}}
+        Price: {{form.price}}
+        Image: {{form.image}}
+        
+        <input style="margin-top: 15px; background: #42ada7 ; border: none; border-radius: 3px" type="submit" value="Submit"></input>
+    </form>
+
+
+    <!-- List Product--> 
+    <h3 style="text-align: center; margin-top: 40px ; border-top: 2px solid; padding-top: 10px">List product on sale</h3>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product</th>
+            <th scope="col">Image</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for item in products  %}
+                <tr>
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.product}}</td>
+                <td>
+                    <div class="image_item">
+                        <img class="row-image" src="{{item.image.url}}">
+                    </div>	
+                </td>
+                <td>${{item.price}}</td>
+                <td>
+                    <form method='POST' action="{% url 'incre_descrea'%}">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{item.id}}"></input>
+                        <button style="border: none; background: #09b7ad" type="submit">Edit</button>
+                    </form>
+                </td>
+                <td>
+                    <form method='POST' action="{% url 'delete_product'%}">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{item.id}}"></input>
+                        <button style="border: none; background: #e52a2a" type="submit">Delete</button>
+                    </form>
+                </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock create_product %} 
